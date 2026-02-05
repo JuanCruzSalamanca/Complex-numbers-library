@@ -54,7 +54,11 @@ def cartesian_to_polar(num1:tuple) -> tuple:
 def polar_to_cartesian(num1:tuple) -> tuple:
     a = num1[0] * math.cos(num1[1])
     b = num1[0] * math.sin(num1[1])
-    return int(a),int(b)
+    return int(round(a,2)), int(round(b,2))
+
+def complex_phase(num1: tuple) -> tuple:
+    phase = cartesian_to_polar(num1)[1]
+    return phase
 
 def main():
     # Recursos para usar
@@ -72,7 +76,8 @@ def main():
     division_line = "=============================================================="
     options = ["1. Suma", "2. Resta", "3. Muliplicación",
                "4. División", "5. Módulo", "6. Conjugado",
-               "7. Conversión sistema de coordenadas"]
+               "7. Conversión sistema de coordenadas",
+               "8. Fase"]
     
     # =======================================================
     
@@ -137,8 +142,16 @@ def main():
         else:
             polar = string_to_polar(input("Escriba el módulo y ángulo(EN RADIANES) de C_1 como una tupla: "))
             answer = polar_to_cartesian(polar)
-            print(f'C_1 en coordenadas cartesianas es: {answer}') 
-main()
+            print(f'C_1 en coordenadas cartesianas es: {answer}')
+            
+    else:
+        print("FASE")
+        c_12 = string_to_complex(input("Escriba C_1 como una tupla: "))
+        answer = complex_phase(c_12)
+        print(f"La fase del número complejo es: {answer}")
+        
+if __name__ == '__main__':
+    main()
 
 
 

@@ -1,4 +1,7 @@
 # Libreria números complejos
+> El archivo [Test_calculadota.py](Test_calculadota.py) es el archivo de pruebas *unittest* para la [calculadora de números complejos](Calculadora_números_complejos.py).
+
+---
 
 La libreria puede realizar siete operaciones de números complejos. Cada número de entrada se debe escribir como un tupla ``(a,b)`` que representara el número complejo $a + bi$. Las operaciones que puede realizar esta calculadora son:
 
@@ -64,3 +67,6 @@ $$
 $$
     b = \rho\sin{\theta}
 $$
+
+## 8. Fase
+Dado un número complejo $C_1 = (a_1, b_1)$ en coordenadas cartesianas, la calculadora hace la operación teniendo en cuenta que la fase de un número complejo es el mismo ángulo $\theta$ en coordenadas polares.
