@@ -54,7 +54,7 @@ $$
 $$
 
 $$
-    \theta = \arctan{\frac{b_1}{a_1}}
+    \theta = \tan^{-1}{\frac{b_1}{a_1}}
 $$
 
 ### Coordenadas polares a cartesianas
@@ -67,6 +67,9 @@ $$
 $$
     b = \rho\sin{\theta}
 $$
+<<<<<<< HEAD
 
 ## 8. Fase
 Dado un número complejo $C_1 = (a_1, b_1)$ en coordenadas cartesianas, la calculadora hace la operación teniendo en cuenta que la fase de un número complejo es el mismo ángulo $\theta$ en coordenadas polares.
+=======
+>>>>>>> c65d7d6683e5d859d5a2286ce109aff1adfb1042
