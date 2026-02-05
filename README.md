@@ -51,7 +51,7 @@ $$
 $$
 
 $$
-    \theta = \arctan{\frac{b_1}{a_1}}
+    \theta = \tan^{-1}{\frac{b_1}{a_1}}
 $$
 
 ### Coordenadas polares a cartesianas
