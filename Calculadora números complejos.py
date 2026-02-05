@@ -1,3 +1,22 @@
+import math
+
+def string_to_complex(num: str) -> tuple:
+    '''La funcion transforma el str recibido por una tupla que reprensenta 
+        un complejo para poder realizar las operaciones    
+    '''
+    remove_pharenteses = num.strip("()")
+    numbers = remove_pharenteses.split(",")
+    numbers = [int(i) for i in numbers]
+    r,c = numbers[0], numbers[1]   
+    return r,c
+
+def string_to_polar(num: str) -> tuple:
+    remove_pharenteses = num.strip("()")
+    numbers = remove_pharenteses.split(",")
+    numbers = [float(i) for i in numbers]
+    rho, angle = numbers[0], numbers[1]
+    return rho, angle
+
 def complex_addition(num1:tuple, num2: tuple) -> tuple:
     r = num1[0] + num2[0]
     c = num1[1] + num2[1]
@@ -27,12 +46,15 @@ def complex_conjugation(num1: tuple) -> tuple:
     c = num1[1] * -1
     return r,c
     
-def string_to_complex(num: str) -> tuple:
-    remove_pharenteses = num.strip("()")
-    numbers = remove_pharenteses.split(",")
-    numbers = [int(i) for i in numbers]
-    r,c = numbers[0], numbers[1]   
-    return r,c
+def cartesian_to_polar(num1:tuple) -> tuple:
+    rho = complex_modulus(num1)
+    angle = math.atan(num1[1] / num1[0])
+    return rho, angle
+
+def polar_to_cartesian(num1:tuple) -> tuple:
+    a = num1[0] * math.cos(num1[1])
+    b = num1[0] * math.sin(num1[1])
+    return int(a),int(b)
 
 def main():
     # Recursos para usar
@@ -49,7 +71,8 @@ def main():
                  "                                  ░░░░░                                                                                                                             "]
     division_line = "=============================================================="
     options = ["1. Suma", "2. Resta", "3. Muliplicación",
-               "4. División", "5. Módulo", "6. Conjugado"]
+               "4. División", "5. Módulo", "6. Conjugado",
+               "7. Conversión sistema de coordenadas"]
     
     # =======================================================
     
@@ -66,42 +89,55 @@ def main():
         c_1 = string_to_complex(input("Escriba C_1 como una tupla: "))
         c_2 = string_to_complex(input("Escriba C_2 como una tupla: "))
         answer = complex_addition(c_1, c_2)
-        print(f"Su resultado es {answer}")
+        print(f"Su resultado es: {answer}")
         
     elif selection == 2:
         print("RESTA")
         c_3 = string_to_complex(input("Escriba C_1 como una tupla: "))
         c_4 = string_to_complex(input("Escriba C_2 como una tupla: "))
         answer = complex_subtraction(c_3, c_4)
-        print(f"Su resultado es {answer}")
+        print(f"Su resultado es: {answer}")
         
     elif selection == 3:
         print("MULTIPLICACIÓN")
         c_5 = string_to_complex(input("Escriba C_1 como una tupla: "))
         c_6 = string_to_complex(input("Escriba C_2 como una tupla: "))
         answer = complex_multiplication(c_5, c_6)
-        print(f"Su resultado es {answer}")
+        print(f"Su resultado es: {answer}")
         
     elif selection == 4:
         print("DIVISIÓN")
         c_7 = string_to_complex(input("Escriba C_1 como una tupla: "))
         c_8 = string_to_complex(input("Escriba C_2 como una tupla: "))
         answer = complex_division(c_7, c_8)
-        print(f"Su resultado es {answer}")
+        print(f"Su resultado es: {answer}")
 
     elif selection == 5:
         print("MÓDULO")
         c_9 = string_to_complex(input("Escriba C_1 como una tupla: "))
         answer = complex_modulus(c_9)
-        print(f"Su resultado es {answer}")
+        print(f"Su resultado es: {answer}")
                 
     elif selection == 6:
         print("CONJUGADO")
         c_10 = string_to_complex(input("Escriba C_1 como una tupla: "))
         answer = complex_conjugation(c_10)
-        print(f"Su resultado es {answer}")
+        print(f"Su resultado es: {answer}")
         
-        
+    elif selection == 7:
+        coords_options = ["1. Cartesianas ==> Polares",
+                          "2. Polares ==> Cartesianas"]
+        for i in coords_options:
+            print(i)
+        coords_select = int(input("Seleccione una opción: "))
+        if coords_select == 1:
+            c_11 = string_to_complex(input("Escriba C_1 como una tupla: "))
+            answer = cartesian_to_polar(c_11)
+            print(f"C_1 en coordenadas polares es: {answer}")
+        else:
+            polar = string_to_polar(input("Escriba el módulo y ángulo(EN RADIANES) de C_1 como una tupla: "))
+            answer = polar_to_cartesian(polar)
+            print(f'C_1 en coordenadas cartesianas es: {answer}') 
 main()
 
 
